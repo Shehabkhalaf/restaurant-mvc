@@ -4,12 +4,14 @@ namespace MVC\core;
 
 class app
 {
-  public function __construct()
-  {
-  }
   private $controller;
   private $method;
   private $params;
+  public function __construct()
+  {
+    $this->url();
+    $this->render();
+  }
   private function url()
   {
     if (!empty($_SERVER['QUERY_STRING'])) {
