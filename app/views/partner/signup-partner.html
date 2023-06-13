@@ -28,7 +28,7 @@
       </video>
     </div>
     <div class="box p-5">
-      <form id="sub" enctype="multipart/form-data" action="partner/partner.html">
+      <form id="sub" enctype="multipart/form-data" method="post">
         <div class="row">
           <div class="col-lg-6 col-md-12">
             <div class="form-floating">
@@ -66,87 +66,58 @@
               <label for="description" class="form-label">Description (delivers to you)
               </label>
               <input type="text" class="form-control" placeholder="e.g Broast Meal is a restaurant located in Egypt..."
-                id="description" required>
+                id="description" name="description" required>
             </div>
           </div>
           <div class="col-lg-3">
             <div class="mb-3">
               <label for="deliveryFees" class="form-label">Delivery Fees
               </label>
-              <input type="number" min="1" class="form-control" placeholder="e.g 9.99" id="deliveryFees" required>
+              <input type="number" min="1" class="form-control" placeholder="e.g 9.99" id="deliveryFees" name="fees" required>
             </div>
           </div>
           <div class="col-lg-3">
             <div class="mb-3">
               <label for="deliveryTime" class="form-label">Delivery Time
               </label>
-              <input type="number" min="1" class="form-control" placeholder="e.g 9.99" id="deliveryTime" required>
+              <input type="number" min="1" class="form-control" placeholder="e.g 9.99" id="deliveryTime" name="deliveryTime" required>
             </div>
           </div>
           <div class="col-lg-3">
             <div class="mb-3">
               <label for="minOrder" class="form-label">Min. Order
               </label>
-              <input type="number" min="1" class="form-control" placeholder="e.g 9.99" id="minOrder" required>
+              <input type="number" min="1" class="form-control" placeholder="e.g 9.99" id="minOrder" name="minOrder" required>
             </div>
           </div>
           <div class="col-lg-3">
             <div class="mb-3">
               <label for="hourOpen" class="form-label">Open At (Hour)
               </label>
-              <input type="number" min="0" max="23" class="form-control" placeholder="e.g 23" id="hourOpen" required>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="mb-3">
-              <label for="minuteOpen" class="form-label">Open At (Minute)
-              </label>
-              <input type="number" min="0" max="59" class="form-control" placeholder="e.g 59" id="minuteOpen" required>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="mb-3">
-              <label for="secondsOpen" class="form-label">Open At (Seconds)
-              </label>
-              <input type="number" min="0" max="59" class="form-control" placeholder="e.g 59" id="secondsOpen" required>
+              <input type="number" min="0" max="23" class="form-control" placeholder="e.g 23" id="hourOpen" name="openAt" required>
             </div>
           </div>
           <div class="col-lg-3">
             <div class="mb-3">
               <label for="hourClose" class="form-label">Close At (Hour)
               </label>
-              <input type="number" min="0" max="23" class="form-control" placeholder="e.g 23" id="hourClose" required>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="mb-3">
-              <label for="minuteClose" class="form-label">Close At (Minute)
-              </label>
-              <input type="number" min="0" max="59" class="form-control" placeholder="e.g 59" id="minuteClose" required>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="mb-3">
-              <label for="secondsClose" class="form-label">Close At (Seconds)
-              </label>
-              <input type="number" min="0" max="59" class="form-control" placeholder="e.g 59" id="secondsClose"
-                required>
+              <input type="number" min="0" max="23" class="form-control" placeholder="e.g 23" id="hourClose" name="cloaseAt" required>
             </div>
           </div>
           <div class="col-lg-6">
             <div class="mb-3">
               <label for="status" class="form-label">Restaurant Status</label>
               <select id="status" class="form-select" aria-label="Default select example" required>
-                <option value="busy">Busy</option>
-                <option value="close">Close</option>
-                <option value="empty">Empty</option>
+                <option value="busy" name="status">Busy</option>
+                <option value="close" name="status">Close</option>
+                <option value="empty" name="status">Empty</option>
               </select>
             </div>
           </div>
           <div class="col-lg-6">
             <div class="mb-3">
               <label for="formFile" class="form-label">logo</label>
-              <input class="form-control" type="file" id="formFile">
+              <input class="form-control" type="file" id="formFile" name="logo">
             </div>
           </div>
           <div class="check">
