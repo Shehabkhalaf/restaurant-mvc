@@ -7,16 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Food Hunter</title>
   <!-- File Css Bootstrap -->
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/bootstrap.min.css.map">
+  <link rel="stylesheet" href="<?php echo LINK; ?>bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo LINK; ?>bootstrap.min.css.map">
   <!-- Font AweSome -->
   <script src="https://kit.fontawesome.com/49f02d4a75.js" crossorigin="anonymous"></script>
   <!-- File Css Main -->
-  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="<?php echo LINK; ?>style.css">
   <!-- File Css Partner -->
-  <link rel="stylesheet" href="../../css/partner.css">
+  <link rel="stylesheet" href="<?php echo LINK; ?>partner.css">
   <!-- File Css Footer Dash -->
-  <link rel="stylesheet" href="../../css/footerDash.css">
+  <link rel="stylesheet" href="<?php echo LINK; ?>footerDash.css">
 </head>
 
 <div class="partner">
@@ -140,8 +140,8 @@
 </div>
 
 <!-- File Js Bootstrap -->
-<script src="../css/bootstrap.bundle.min.js"></script>
-<script src="../css/bootstrap.bundle.min.js.map"></script>
+<script src="<?php echo LINK; ?>bootstrap.bundle.min.js"></script>
+<script src="<?php echo LINK; ?>bootstrap.bundle.min.js.map"></script>
 </body>
 
 </html>

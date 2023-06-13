@@ -30,7 +30,9 @@ class dbcontroller
   }
   public function insert($tablename, $data)
   {
-    return $this->db->insert($tablename, $data);
+    if (!empty($data)) {
+      return $this->db->insert($tablename, $data);
+    }
   }
   public function  update($tablename, $data, $id)
   {
