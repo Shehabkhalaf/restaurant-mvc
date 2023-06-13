@@ -8,6 +8,6 @@ class restaurantcontroller
 {
   public function signup()
   {
-    controller::view('signup-partner', []);
+    controller::view('restaurant/signup-partner', []);
   }
 }
