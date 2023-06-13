@@ -2,13 +2,12 @@
 
 namespace MVC\controllers;
 
+use MVC\core\controller;
+
 class restaurantcontroller
 {
   public function signup()
   {
-    require_once(VIEWS . 'partner/signup-partner.php');
-    echo '<pre>';
-    print_r($_POST);
-    echo '</pre>';
+    controller::view('signup-partner', []);
   }
 }
