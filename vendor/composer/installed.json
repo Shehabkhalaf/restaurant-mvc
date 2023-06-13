@@ -1,14 +1,9 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "6c30a1c55d8bed8ec263720fad3f2900",
     "packages": [
         {
             "name": "dcblogdev/pdo-wrapper",
             "version": "v2.0.2",
+            "version_normalized": "2.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dcblogdev/pdo-wrapper.git",
@@ -23,7 +18,9 @@
             "require": {
                 "php": ">=7.2"
             },
+            "time": "2022-12-18T01:54:42+00:00",
             "type": "library",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "Dcblogdev\\PdoWrapper\\": "/src"
@@ -52,16 +49,9 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-12-18T01:54:42+00:00"
+            "install-path": "../dcblogdev/pdo-wrapper"
         }
     ],
-    "packages-dev": [],
-    "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
-    "prefer-stable": false,
-    "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "dev": true,
+    "dev-package-names": []
 }
