@@ -1,3 +1,6 @@
+<?php
+@session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +8,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Food Hunter</title>
+  <title><?= $_SESSION['data']['name'] ?></title>
   <!-- File Css Bootstrap -->
   <link rel="stylesheet" href="<?php echo LINK; ?>bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo LINK; ?>bootstrap.min.css.map">
@@ -24,13 +27,11 @@
     <div class="row">
       <div class="col-lg-2 col-md-2 part-1 nonePadding bigScreen">
         <div class="dash ">
-          <img src="../../images/food-hunter-low.png" class="ps-3 pt-3 pb-3 img-fluid" alt="">
+          <img src="http://localhost/restaurant-mvc/app/views/images/food-hunter-low.png"
+            class="ps-3 pt-3 pb-3 img-fluid" alt="">
           <ul>
-            <li><a class="active" href="partner.html"><i class="fa-solid fa-tv"></i> Dashboard</a></li>
-            <li><a href="Food.html"><i class="fa-solid fa-bowl-food"></i> Food</a></li>
-            <li><a href="orders.html"><i class="fa-solid fa-truck-fast"></i> Orders</a></li>
-            <li><a href="users.html"><i class="fa-solid fa-users"></i> Users</a></li>
-            <li><a href="feedback.html"><i class="fa-solid fa-star"></i> Feedbacks</a></li>
+            <li><a class="active" href="dachboard"><i class="fa-solid fa-tv"></i> Dashboard</a></li>
+            <li><a href="food"><i class="fa-solid fa-bowl-food"></i> Food</a></li>
             <li><a href="profilePartner.html"><i class="fa-solid fa-image-portrait"></i> Show Profile</a>
             </li>
             <li><a href="settings.html"><i class="fa-solid fa-gears"></i> Settings</a></li>
@@ -41,7 +42,7 @@
         <div class="food">
           <nav class="navbar navbar-expand-lg ">
             <div class="container-fluid pt-2">
-              <div class="navbar-brand" id="namePartner"></div>
+              <div class="navbar-brand" id="namePartner"><?= $_SESSION['data']['name'] ?></div>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -56,11 +57,6 @@
                       </li>
                       <li><a href="Food.html"><i class="fa-solid fa-bowl-food"></i>
                           Food</a></li>
-                      <li><a href="orders.html"><i class="fa-solid fa-truck-fast"></i> Orders</a>
-                      </li>
-                      <li><a href="users.html"><i class="fa-solid fa-users"></i> Users</a></li>
-                      <li><a href="feedback.html"><i class="fa-solid fa-star"></i> Feedbacks</a>
-                      </li>
                       <li><a href="profilePartner.html"><i class="fa-solid fa-image-portrait"></i>
                           Show Profile</a></li>
                       <li><a href="settings.html"><i class="fa-solid fa-gears"></i> Settings</a>
@@ -78,7 +74,7 @@
                   <div class="box d-flex justify-content-between align-items-center">
                     <div class="title">
                       <h5>TOTAL ORDERS</h5>
-                      <p id="totalOrders">7</p>
+                      <p id="totalOrders">0</p>
                     </div>
                     <div class="icon">
                       <i class="fa-solid fa-cart-shopping"></i>
@@ -89,7 +85,7 @@
                   <div class="box d-flex justify-content-between align-items-center">
                     <div class="title">
                       <h5>TOTAL USERS</h5>
-                      <p id="totalUsers">7</p>
+                      <p id="totalUsers">0</p>
                     </div>
                     <div class="icon">
                       <i class="fa-solid fa-user"></i>
@@ -100,7 +96,7 @@
                   <div class="box d-flex justify-content-between align-items-center">
                     <div class="title">
                       <h5>TOTAL SALES</h5>
-                      <p id="totalSales">7</p>
+                      <p id="totalSales">0</p>
                     </div>
                     <div class="icon">
                       <i class="fa-solid fa-sack-dollar"></i>

@@ -1,3 +1,7 @@
+<?php
+@session_start();
+$restaurantName = $_SESSION['data']['name'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,18 +9,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Food Hunter</title>
+  <title><?= $restaurantName ?> Food</title>
   <!-- File Css Bootstrap -->
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/bootstrap.min.css.map">
+  <link rel="stylesheet" href="<?php echo LINK; ?>bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo LINK; ?>bootstrap.min.css.map">
   <!-- Font AweSome -->
   <script src="https://kit.fontawesome.com/49f02d4a75.js" crossorigin="anonymous"></script>
   <!-- File Css Main -->
-  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="<?php echo LINK; ?>style.css">
   <!-- File Css Footer Dash -->
-  <link rel="stylesheet" href="../../css/footerDash.css">
+  <link rel="stylesheet" href="<?php echo LINK; ?>footerDash.css">
   <!-- File Css Partner -->
-  <link rel="stylesheet" href="../../css/partner.css">
+  <link rel="stylesheet" href="<?php echo LINK; ?>partner.css">
 
 </head>
 
@@ -26,13 +30,11 @@
       <div class="row">
         <div class="col-lg-2 col-md-2 part-1 nonePadding bigScreen">
           <div class="dash ">
-            <img src="../../images/food-hunter-low.png" class="ps-3 pt-3 pb-3 img-fluid" alt="">
+            <img src="http://localhost/restaurant-mvc/app/views/images/food-hunter-low.png"
+              class="ps-3 pt-3 pb-3 img-fluid" alt="">
             <ul>
-              <li><a href="partner.html"><i class="fa-solid fa-tv"></i> Dashboard</a></li>
-              <li><a class="active" href="Food.html"><i class="fa-solid fa-bowl-food"></i> Food</a></li>
-              <li><a href="orders.html"><i class="fa-solid fa-truck-fast"></i> Orders</a></li>
-              <li><a href="users.html"><i class="fa-solid fa-users"></i> Users</a></li>
-              <li><a href="feedback.html"><i class="fa-solid fa-star"></i> Feedbacks</a></li>
+              <li><a href="dachboard"><i class="fa-solid fa-tv"></i> Dashboard</a></li>
+              <li><a class="active" href="food"><i class="fa-solid fa-bowl-food"></i> Food</a></li>
               <li><a href="profilePartner.html"><i class="fa-solid fa-image-portrait"></i> Show
                   Profile</a>
               </li>
@@ -44,19 +46,14 @@
           <div class="food">
             <nav class="navbar navbar-expand-lg ">
               <div class="container-fluid pt-2">
-                <div class="navbar-brand" id="namePartner"></div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                  aria-label="Toggle navigation">
-                  <i class="fa-solid fa-bars"></i>
-                </button>
+                <div class="navbar-brand" id="namePartner"><?= $restaurantName ?></div>
                 <div class="collapse navbar-collapse p-1" id="navbarNavAltMarkup">
                   <div class="navbar-nav">
                     <div class="dash smallScreen">
                       <ul>
-                        <li><a href="partner.html"><i class="fa-solid fa-tv"></i> Dashboard</a>
+                        <li><a href="dachboard"><i class="fa-solid fa-tv"></i> Dashboard</a>
                         </li>
-                        <li><a href="Food.html" class="active"><i class="fa-solid fa-bowl-food"></i>
+                        <li><a href="food" class="active"><i class="fa-solid fa-bowl-food"></i>
                             Food</a></li>
                         <li><a href="orders.html"><i class="fa-solid fa-truck-fast"></i>
                             Orders</a>
@@ -82,29 +79,29 @@
                 <div class="title">
                   <h1>Add Food</h1>
                 </div>
-                <form id="submit">
+                <form action="food" id="submit" enctype="multipart/form-data" method="post">
                   <div class="row">
                     <div class="col-lg-5">
                       <div class="mb-3">
                         <label for="foodname" class="form-label">Title
                         </label>
                         <input type="text" class="form-control" placeholder="e.g Arabian Shawarma" id="foodname"
-                          required>
+                          name="foodName" required>
                       </div>
                     </div>
                     <div class="col-lg-5">
                       <div class="mb-3">
-                        <label for="description" class="form-label">Description
-                        </label>
+                        <label for="description" class="form-label">Description</label>
                         <input type="text" class="form-control"
-                          placeholder="e.g A creamy combination of cheese mayo base..." id="description" required>
+                          placeholder="e.g A creamy combination of cheese mayo base..." id="description"
+                          name="description" required>
                       </div>
                     </div>
                     <div class="col-lg-3">
                       <div class="mb-3">
-                        <label for="price" class="form-label">Price
-                        </label>
-                        <input type="number" class="form-control" min="0" placeholder="e.g 9.99" id="price" required>
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control" min="0" placeholder="e.g 9.99" id="price" name="price"
+                          required>
                       </div>
                     </div>
                     <div class="col-lg-9">
@@ -130,6 +127,33 @@
                       </tr>
                     </thead>
                     <tbody>
+                      <?php
+                      $mealid;
+                      foreach ($meals as $row) :
+                        echo "<tr>";
+                        foreach ($row as $key => $value) {
+                          if ($key == 'mealid' || $key == 'partnerid') {
+                            $mealid = $key == 'mealid' ? $value : '';
+                            continue;
+                          }
+                          echo "<td>";
+                          if ($key == 'image') {
+                            echo "<img src='$value' alt='Image' width='50' height='50'>";
+                          } else {
+                            echo $value;
+                          }
+                          echo "</td>";
+                        } ?>
+                      <td>
+                        <form method="post" action="food">
+                          <input type="hidden" value="<?php echo $mealid; ?>" name="mealid">
+                          <input type="submit" value="update" name="action">
+                          <input type="submit" value="delete" name="action">
+                        </form>
+                      </td>
+                      <?php echo "</tr>";
+                      endforeach;
+                      ?>
                     </tbody>
                   </table>
                 </div>
@@ -160,7 +184,7 @@
     </div>
     <div class="offcanvas-body">
       <div class="container">
-        <form id="submitUpdateData">
+        <form id="submitUpdateData" method="post" enctype="multipart/form-data" action="food">
           <div class="row">
             <div class="col-lg-5">
               <div class="mb-3">
@@ -203,8 +227,8 @@
   <!-- File Js Sweet alert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- File Js Bootstrap -->
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/bootstrap.min.css.map">
+  <script src="<?php echo LINK; ?>bootstrap.bundle.min.js"></script>
+  <script src="<?php echo LINK; ?>bootstrap.bundle.min.js.map"></script>
 
 </body>
 

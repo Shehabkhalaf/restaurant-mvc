@@ -32,6 +32,7 @@ class app
         $controller = new $controller;
         call_user_func_array([$controller, $this->method], $this->params);
       } else {
+        echo $this->method;
         echo 'METHOD NOT EXISTS';
       }
     } else {

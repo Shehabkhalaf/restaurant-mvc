@@ -1,33 +1,8 @@
 <?php
 @session_start();
-if (count($_POST) != 0) {
-  $category = '';
-  foreach ($_POST['food'] as $value) :
-    $category .= $value . " ";
-  endforeach;
-  $logo_name = $_FILES["image"]["name"];
-  $logo = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-  $logoType = $_FILES["image"]["type"];
-  $data = [
-    'email' => $_POST['email'],
-    'password' => $_POST['password'],
-    'name' => $_POST['name'],
-    'location' => $_POST['location'],
-    'phone' => $_POST['phone'],
-    'logoname' => $logo_name,
-    'logo' => $logo,
-    'logoType' => $logoType,
-    'open' => $_POST['openAt'],
-    'close' => $_POST['closeAt'],
-    'fees' => $_POST['fees'],
-    'time' => $_POST['deliveryTime'],
-    'status' => $_POST['status'],
-    'description' => $_POST['description'],
-    'minorder' => $_POST['minOrder'],
-    'category' => $category
-  ];
-  $_SESSION['data'] = $data;
-}
+@session_unset();
+@session_start();
+@session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +11,7 @@ if (count($_POST) != 0) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Food Hunter</title>
+  <title>Restaurant Sign-up</title>
   <!-- File Css Bootstrap -->
   <link rel="stylesheet" href="<?php echo LINK; ?>bootstrap.min.css" />
   <link rel="stylesheet" href="<?php echo LINK; ?>bootstrap.min.css.map">
@@ -55,11 +30,11 @@ if (count($_POST) != 0) {
   <div class="signPartner overflow-hidden position-relative">
     <div class="video">
       <video loop autoplay muted id="video">
-        <source src="../video/video-2.mp4" type="video/mp4" />
+        <source src="http://localhost/restaurant-mvc/app/views/video/video-2.mp4" type="video/mp4" />
       </video>
     </div>
     <div class="box p-5">
-      <form action="partnerProfile" id="sub" enctype="multipart/form-data" method="post">
+      <form action="postSignup" id="sub" enctype="multipart/form-data" method="post">
         <div class="row">
           <div class="col-lg-6 col-md-12">
             <div class="form-floating">
@@ -146,7 +121,7 @@ if (count($_POST) != 0) {
           <div class="col-lg-6">
             <div class="mb-3">
               <label for="formFile" class="form-label">logo</label>
-              <input class="form-control" type="file" id="formFile" name="image">
+              <input class="form-control" type="file" id="formFile" name="image" required>
             </div>
           </div>
           <div class="check">
@@ -162,7 +137,7 @@ if (count($_POST) != 0) {
               </div>
               <div class="col-lg-3 col-md-4 col-sm-6 col-6">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="SandWiches" id="flexCheckChecked" name="food[]">
+                  <input class="form-check-input" type="checkbox" value="SandWiches" id="flexCheckChecked" name="food[]" checked>
                   <label class="form-check-label" for="flexCheckChecked">
                     SandWiches
                   </label>
