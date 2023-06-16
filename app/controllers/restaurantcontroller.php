@@ -37,7 +37,7 @@ class restaurantcontroller extends restaurant
     $restaurant = new meal;
     $meals = $restaurant->getMeals();
     controller::view('partner/Food', ['meals' => $meals]);
-    if (isset($_POST) && count($_POST) != 0 && !empty($_POST['foodName'])) {
+    if (!empty($_POST['foodName'])) {
       $addmeal = $restaurant->addMeal($_POST, $_FILES);
       if ($addmeal) {
         header('Refresh: 0.3');
@@ -46,11 +46,13 @@ class restaurantcontroller extends restaurant
         header('Location: food');
         exit;
       }
-    } else {
+    } else if (!empty($_POST['mealid'])) {
       $modify = $restaurant->modifyMeal($_POST);
       if ($modify) {
         header('Refresh: 0.3');
         exit;
+      } else {
+        header("Location: dachboard");
       }
     }
     ob_end_flush();

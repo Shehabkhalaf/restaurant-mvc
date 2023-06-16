@@ -48,14 +48,14 @@ class meal extends dbcontroller
 
   public function modifyMeal($POST)
   {
-    if (count($POST) != 0) {
-      if ($POST['action'] == 'delete') {
-        try {
-          $this->delete('meal', $POST['mealid']);
-          return true;
-        } catch (PDOException $e) {
-          return false;
-        }
+    if ($POST['action'] == 'delete') {
+      try {
+        $id = ['mealid' => $POST['mealid']];
+        $this->delete('meal', $id);
+        return true;
+      } catch (PDOException $e) {
+        echo $e->getMessage();
+        return false;
       }
     }
   }

@@ -40,7 +40,7 @@ class dbcontroller
   }
   public function delete($tablename, $id)
   {
-    return $this->db->deleteById($tablename, $id);
+    return $this->db->delete($tablename, $id);
   }
   public function select($query)
   {
